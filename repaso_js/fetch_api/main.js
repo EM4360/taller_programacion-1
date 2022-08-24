@@ -34,23 +34,20 @@ mostrar_objeto();
 const consumir_api = async () => {
   // estamos realizando mediante la funcion nativa de javascript denominada fetch, una solicitud a traves
   // del método GET de man era de obtener las publicaciones en notacion JSON
-  const publicaciones = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const publicaciones = await fetch(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
 
-  const publicaciones_definitivas = await publicaciones.json()
+  const publicaciones_definitivas = await publicaciones.json();
 
+  let items_totales = [];
 
-
-  let items_totales = []
-
-  publicaciones_definitivas.forEach(element => {
-    
-
-    let item = `<li class="list-group-item">${element.title}</li>`
-    items_totales.push(item)
-
+  publicaciones_definitivas.forEach((element) => {
+    let item = `<li class="list-group-item">${element.title}</li>`;
+    items_totales.push(item);
   });
 
-  document.getElementById("lista_publicaciones").innerHTML = items_totales.join('')
-
-}
-consumir_api()
+  document.getElementById("lista_publicaciones").innerHTML =
+    items_totales.join("");
+};
+consumir_api();
